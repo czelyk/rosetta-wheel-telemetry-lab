@@ -42,4 +42,4 @@ Run `python run.py --verify` after `python fetch.py`. The check compares the com
 
 ## Open contribution
 
-The replay recovers useful evidence discarded by exact matching. The value of a new telemetry representation still depends on a comparison with conventional bin counts, extrema and event retention at the same encoded byte budget. That comparison has not been executed here. The [next-step protocol](docs/NEXT_STEP.md) defines what would justify further implementation.
+The replay recovers useful evidence discarded by exact matching. The subsequent [byte-budget experiment](docs/RETENTION_RESULTS.md) executed the conventional-baseline comparison and found that a standard 256-byte summary already preserves the primary frozen questions. The original alignment measurements above remain the record of the first stage. The later result closes the current case for an additional representation answering those same queries.
