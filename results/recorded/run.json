@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-18",
+  "python": "3.12.10",
+  "os": "Windows",
+  "dependencies": "Python standard library only",
+  "commands": [
+    "python -B fetch.py --verify-only",
+    "python -B run.py --verify",
+    "python -B -m unittest discover -s tests -v"
+  ],
+  "boundary_tests_passed": 8,
+  "verified_input_products": 48,
+  "historical_coverage_rows_matched": 12,
+  "historical_peak_records_matched": 20,
+  "network_download_smoke": "ros_hk_nacw0g0t_2015_q3.lbl downloaded and SHA-256 verified",
+  "source_sha256": {
+    "rosetta.py": "92c65a5948d1e0b72de9ec986599946eabc9aac29019bc923d10e2cc8451d92e",
+    "run.py": "3a523648a5ed123a9a732a8e99f120963b93d22fda70d348d93e36aceb228feb",
+    "fetch.py": "ce7d778f03fdc683c1bc9e6ce6021de6615acc17978a68e9083edb9105af7b68",
+    "tests/test_alignment.py": "12a24ba8ed37ee84cee3939777ed0c82243fe6f9b60491a4577ca18030f7fe73",
+    "data/manifest.tsv": "34a3868200ae9d8e28ec9fe1bbce64daba7539445c9a8c71bfcd6d4d117dac78"
+  }
+}
