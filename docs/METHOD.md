@@ -26,3 +26,9 @@ The comparison was designed after the initial archive screen. The initial plan h
 ## Interpretation
 
 Archive row counts measure coverage. They are correlated samples and should not be converted into fault or acceptance probabilities. Estimated friction is a spacecraft-derived parameter. Its association with momentum is useful for replaying documented engineering evidence, while causal fault diagnosis requires additional measurements and a validated physical model.
+
+## Encoded retention products
+
+The subsequent [frozen byte-budget protocol](RETENTION_PROTOCOL.md) specifies the quantization, metadata, conventional policies and queries. Header integers use little-endian encoding. The policy tag's low nibble identifies the product, and its high nibble identifies nearest or prior-only admission. Torque-record timestamps are integer millisecond offsets from the daily anchor. Every decoded packet is checked for CRC, entry extent, zero padding and metadata consistency.
+
+The bin extrema product stores signed minimum and maximum torque. The fixed-level product instead stores maximum absolute torque and a count at the primary 20 mNm level. The two products each have 28 explicit eight-byte cells, a 28-byte header and four-byte CRC. Their content stays fixed at 256 bytes, with padding at larger allowances. The [comparison results](RETENTION_RESULTS.md) distinguish directly retained statistics from uncertainty on the secondary query.

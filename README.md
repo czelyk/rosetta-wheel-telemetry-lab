@@ -2,7 +2,7 @@
 
 Reproducible replay of ESA Rosetta reaction-wheel telemetry, comparing timestamp alignment and reproducing a published wheel-health observation.
 
-The research question is whether a small engineering-telemetry product can retain the evidence used to identify a stressed wheel and its operating regions. This repository implements the first evidence check using public flight data. Comparison of telemetry representations at equal byte budgets and an embedded implementation remain open work.
+The research question is whether a small engineering-telemetry product can retain the evidence used to identify a stressed wheel and its operating regions. This repository implements an archive alignment check and an equal-byte comparison of conventional telemetry products. A standard 256-byte daily summary retains the frozen peak and fixed-exceedance queries in this retrospective experiment. An embedded implementation remains future work, conditional on a distinct research question.
 
 ## Run
 
@@ -36,7 +36,9 @@ The flight-dynamics team reported increased wheel C friction and operational res
 
 ## Research status
 
-The previous exact-timestamp filter excluded usable retrospective evidence. Correcting that filter makes a further comparison testable. A conventional momentum-bin count and extrema summary might retain the same evidence within the available bytes. This repository has yet to demonstrate a contribution beyond that baseline. A Rosetta-specific downlink constraint has also yet to be established.
+The previous exact-timestamp filter excluded usable retrospective evidence. After correcting it, the next experiment serialized and decoded four conventional products at equal daily byte allowances. Across 275 nearest-admitted days, a fixed-level bin summary retains all daily peaks and wheel/bin peak locations in 256 application bytes. It also preserves all 24 positive daily wheel/bin counts at the frozen 20 mNm level. This sufficiency follows from the retained statistics. The case for adding a more elaborate representation for those queries is closed. A Rosetta-specific downlink constraint has yet to be established.
+
+To reproduce the byte-budget comparison, run `python run_retention.py --compare results/retention`. To inspect its 6,600 encoded packets without downloading the flight data, run `python run_retention.py --verify-packets results/retention`. [Detailed results and continuation decision](docs/RETENTION_RESULTS.md)
 
 Current results cover archived estimated torque and measured momentum. Firmware timing, physical wheel measurements, predictive diagnosis and scientific originality remain unvalidated. The project is at exploratory research stage for IAC 2027.
 
@@ -54,7 +56,9 @@ Current results cover archived estimated torque and measured momentum. Firmware 
 | `rosetta.py` | Read PDS tables and calculate alignment and peak evidence |
 | `run.py` | Execute the replay and compare it with recorded measurements |
 | `data/manifest.tsv` | Source URLs, byte counts and SHA-256 digests |
-| `results/recorded/` | Recorded result and execution record |
+| `results/recorded/` | Original alignment result and execution record |
+| `retention.py`, `run_retention.py` | Byte-budget codecs, decoded queries and comparison runner |
+| `results/retention/` | Encoded packets, per-packet index and measured comparison |
 | `tests/` | Timestamp, alignment and integrity boundary checks |
 | `history/` | Original screen and later Rosetta-only audit snapshot |
 
